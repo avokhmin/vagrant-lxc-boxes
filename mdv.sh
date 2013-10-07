@@ -23,7 +23,7 @@ mount --bind /sys       $ch/sys
 cp /etc/resolv.conf $ch/etc/
 
 
-chroot $ch git clone -b $BRANCH git@github.com:avokhmin/vagrant-lxc.git $ch/opt/VAGRANT-LXC-BOX-BUILD
+chroot $ch git clone -b $BRANCH https://github.com/avokhmin/vagrant-lxc.git $ch/opt/VAGRANT-LXC-BOX-BUILD
 cd $ch/$ch/opt/VAGRANT-LXC-BOX-BUILD
 cd ../../../../
 ls -R > /home/vagrant/results/ls.log
