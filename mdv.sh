@@ -2,7 +2,7 @@
 
 ch="$PRODUCTNAME"
 echo $PRODUCTNAME
-echo $REPOS
+echo $REPO
 mkdir $ch
 umount $ch/sys
 umount $ch/proc
