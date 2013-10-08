@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PRODUCTNAME=${PRODUCTNAME:-"vagrant-box"}
+PRODUCTNAME=${PRODUCTNAME:-"cooker"}
 ARCH=${ARCH:-"x86_64"}
 product_type="$PRODUCT_TYPE"
 
