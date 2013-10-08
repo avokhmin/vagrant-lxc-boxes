@@ -10,7 +10,7 @@ umount $ch/proc
 umount $ch/dev/pts
 umount $ch/dev
 urpmi.addmedia --urpmi-root $PRODUCTNAME --distrib --all-media $REPO > /home/vagrant/results/addrepo.log 2>&1
-urpmi --urpmi-root $PRODUCTNAME --root $PRODUCTNAME basesystem-minimal basesystem urpmi rpm locales-en locales-ru rpm-build syslinux yum git lxc --auto
+urpmi --urpmi-root $PRODUCTNAME --root $PRODUCTNAME basesystem-minimal basesystem urpmi rpm locales-en locales-ru rpm-build syslinux yum git lxc --auto --no-suggests --no-verify-rpm
 mkdir -p $ch/dev
 mkdir -p $ch/dev/pts
 mkdir -p $ch/proc
