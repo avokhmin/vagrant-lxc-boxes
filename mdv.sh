@@ -3,6 +3,7 @@
 ch="$PRODUCTNAME"
 echo $PRODUCTNAME
 echo $REPO
+echo $ARCH
 mkdir $ch
 umount $ch/sys
 umount $ch/proc
@@ -34,7 +35,7 @@ ls -R > /home/vagrant/results/ls.log
 echo 
 echo "----------> UR IN Z MATRIX <----------"
 
-/usr/sbin/chroot $ch $ch/opt/VAGRANT-LXC-BOX-BUILD/boxes/build-$PRODUCTNAME-box.sh > /home/vagrant/results/build.log 2>&1
+/usr/sbin/chroot $ch $ch/opt/VAGRANT-LXC-BOX-BUILD/boxes/build-openmandriva-box.sh $PRODUCTNAME $ARCH > /home/vagrant/results/build.log 2>&1
 cp -rfT  $ch/$ch/opt/VAGRANT-LXC-BOX-BUILD/boxes/output /home/vagrant/results
 umount -l $ch/sys
 umount -l $ch/proc
