@@ -37,7 +37,7 @@ echo "----------> UR IN Z MATRIX <----------"
 
 # Configure network
 sudo chkconfig NetworkManager off
-sudo chkconfig –levels 35 network on
+sudo chkconfig --level 35 network on
 sudo service NetworkManager stop
 sudo service network restart
 
