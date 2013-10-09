@@ -36,6 +36,11 @@ echo
 echo "----------> UR IN Z MATRIX <----------"
 
 # Configure network
+sudo chkconfig NetworkManager off
+sudo chkconfig –levels 35 network on
+sudo service NetworkManager stop
+sudo service network restart
+
 sudo cat <<"EOF"> /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0
 BOOTPROTO=none
@@ -56,10 +61,7 @@ sudo cat <<"EOF"> /etc/sysconfig/network
 NETWORKING=yes
 EOF
 
-
-sudo chkconfig NetworkManager off
-sudo chkconfig network on
-sudo service NetworkManager stop
+sudo service network restart
 
 /usr/sbin/chroot $ch ip a
 
