@@ -35,6 +35,32 @@ ls -R > /home/vagrant/results/ls.log
 echo 
 echo "----------> UR IN Z MATRIX <----------"
 
+# Configure network
+sudo cat <<"EOF"> /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+BOOTPROTO=none
+BRIDGE=br0
+ONBOOT=yes
+EOF
+
+sudo cat <<"EOF"> /etc/sysconfig/network-scripts/ifcfg-br0 
+DEVICE=br0
+BOOTPROTO=dhcp
+ONBOOT=yes
+TYPE=Bridge
+DELAY=0
+EOF
+
+
+sudo cat <<"EOF"> /etc/sysconfig/network
+NETWORKING=yes
+EOF
+
+
+sudo chkconfig NetworkManager off
+sudo chkconfig network on
+sudo service NetworkManager stop
+
 /usr/sbin/chroot $ch ip a
 
 /usr/sbin/chroot $ch $ch/opt/VAGRANT-LXC-BOX-BUILD/boxes/build-openmandriva-box.sh $PRODUCTNAME $ARCH > /home/vagrant/results/build.log 2>&1
