@@ -14,7 +14,7 @@ mkdir -p ${ch}/etc/yum.repos.d/
 # Fill in packages into chroot
 setarch ${ARCH} rpm -i --root=${script_path}/${ch} --nodeps http://abf.rosalinux.ru/downloads/${NAME}/repository/${ARCH}/base/release/rosa-release-6Server-4.res6.${ARCH}.rpm
 
-rm -f ${chroot}/etc/yum.repos.d/*
+rm -f ${ch}/etc/yum.repos.d/*
 cat <<"EOF"> ${ch}/etc/yum.repos.d/base.repo
 [base]
 name=BASE
