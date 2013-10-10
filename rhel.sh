@@ -27,7 +27,7 @@ baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH
 gpgcheck=0
 EOF
 
-setarch ${ARCH} yum --installroot=${ch} install -y yum git lxc
+setarch ${ARCH} yum --installroot=${script_path}/${ch} install -y yum git lxc
 
 
 mkdir -p ${ch}/dev
