@@ -17,15 +17,23 @@ setarch ${ARCH} rpm -i --root=${script_path}/${ch} --nodeps http://abf.rosalinux
 rm -f ${ch}/etc/yum.repos.d/*
 cat <<"EOF"> ${ch}/etc/yum.repos.d/base.repo
 [base]
-name=BASE
-baseurl=http://abf-downloads.rosalinux.ru/${NAME}/repository/${ARCH}/base/release/
+name=BASE-release
+baseurl=http://abf-downloads.rosalinux.ru/$NAME/repository/$ARCH/base/release/
 gpgcheck=0
 
-[abf-worker-service]
-name=abf-worker-service
-baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH}/base/release/
+[updates]
+name=BASE-updates
+baseurl=http://abf-downloads.rosalinux.ru/$NAME/repository/$ARCH/base/updates/
 gpgcheck=0
 EOF
+
+cat <<"EOF"> ${ch}/etc/yum.repos.d/abf-worker-service.repo
+[abf-worker-service]
+name=abf-worker-service
+baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/$NAME/$ARCH/base/release/
+gpgcheck=0
+EOF
+
 
 setarch ${ARCH} yum --installroot=${script_path}/${ch} install -y yum git lxc
 
