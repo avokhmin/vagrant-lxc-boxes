@@ -30,7 +30,7 @@ EOF
 cat <<EOF> ${ch}/etc/yum.repos.d/abf-worker-service.repo
 [abf-worker-service]
 name=abf-worker-service
-baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH}/base/release/
+baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH}/abf-worker-service/release/
 gpgcheck=0
 EOF
 
