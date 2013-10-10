@@ -8,7 +8,7 @@ mkdir $ch
 # Init rpm db
 mkdir -p ${ch}/var/lib/rpm
 setarch ${ARCH} rpm --rebuilddb --root=${ch}
-rm -f ${ch}/etc/yum.repos.d/*
+mkdir -p ${ch}/etc/yum.repos.d/
 cat <<"EOF"> ${ch}/etc/yum.repos.d/base.repo
 [base]
 name=BASE
