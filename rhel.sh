@@ -1,15 +1,20 @@
 #!/bin/bash
 
-ch=`pwd`
-ch=${ch}/${NAME}
+ch="${NAME}"
 echo ${NAME}
 echo ${ARCH}
 mkdir ${ch}
+script_path=`pwd`
 
 # Init rpm db
 mkdir -p ${ch}/var/lib/rpm
-setarch ${ARCH} rpm --rebuilddb --root=${ch}
+setarch ${ARCH} rpm --rebuilddb --root=${script_path}/${ch}
 mkdir -p ${ch}/etc/yum.repos.d/
+
+# Fill in packages into chroot
+setarch ${ARCH} rpm -i --root=${script_path}/${ch} --nodeps http://abf.rosalinux.ru/downloads/${NAME}/repository/${ARCH}/base/release/rosa-release-6Server-4.res6.${ARCH}.rpm
+
+rm -f ${chroot}/etc/yum.repos.d/*
 cat <<"EOF"> ${ch}/etc/yum.repos.d/base.repo
 [base]
 name=BASE
@@ -22,8 +27,7 @@ baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH
 gpgcheck=0
 EOF
 
-# Fill in packages into chroot
-setarch ${ARCH} rpm -i --root=${ch} --nodeps groupinstall buildsys-build git lxc
+yum --installroot=/var/tmp/chroot install -y yum git lxc
 
 
 mkdir -p ${ch}/dev
