@@ -65,7 +65,7 @@ echo "----------> UR IN Z MATRIX <----------"
 
 /usr/sbin/chroot $ch ip a
 
-/usr/sbin/chroot $ch cd $ch/opt/VAGRANT-LXC-BOX-BUILD/boxes; ./build-openmandriva-box.sh $PRODUCTNAME $ARCH > /home/vagrant/results/build.log 2>&1
+/usr/sbin/chroot $ch /bin/bash -c "cd $ch/opt/VAGRANT-LXC-BOX-BUILD/boxes; ./build-openmandriva-box.sh $PRODUCTNAME $ARCH" > /home/vagrant/results/build.log 2>&1
 cp -rfT  $ch/$ch/opt/VAGRANT-LXC-BOX-BUILD/boxes/output /home/vagrant/results
 umount -l $ch/sys
 umount -l $ch/proc
