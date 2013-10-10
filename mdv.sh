@@ -28,11 +28,16 @@ ls -R > /home/vagrant/results/ls.log
 echo 
 echo "----------> UR IN Z MATRIX <----------"
 
+exit_code=0
 /usr/sbin/chroot ${ch} /bin/bash -c "cd ${ch}/opt/VAGRANT-LXC-BOX-BUILD/boxes; ./build-openmandriva-box.sh ${NAME} ${ARCH}" > /home/vagrant/results/build.log 2>&1
 cp -rfT  ${ch}/${ch}/opt/VAGRANT-LXC-BOX-BUILD/boxes/output /home/vagrant/results
+[ $? -ne 0 ] && exit_code=1
+
 umount -l ${ch}/sys
 umount -l ${ch}/proc
 umount -l ${ch}/dev/pts
 umount -l ${ch}/dev
 
 rm -rf ${ch}
+
+exit ${exit_code}
