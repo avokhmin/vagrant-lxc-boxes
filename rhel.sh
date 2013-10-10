@@ -27,7 +27,7 @@ baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH
 gpgcheck=0
 EOF
 
-yum --installroot=/var/tmp/chroot install -y yum git lxc
+chroot ${ch} yum install -y git lxc
 
 
 mkdir -p ${ch}/dev
