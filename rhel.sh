@@ -15,22 +15,22 @@ mkdir -p ${ch}/etc/yum.repos.d/
 setarch ${ARCH} rpm -i --root=${script_path}/${ch} --nodeps http://abf.rosalinux.ru/downloads/${NAME}/repository/${ARCH}/base/release/rosa-release-6Server-4.res6.${ARCH}.rpm
 
 rm -f ${ch}/etc/yum.repos.d/*
-cat <<"EOF"> ${ch}/etc/yum.repos.d/base.repo
+cat <<EOF> ${ch}/etc/yum.repos.d/base.repo
 [base]
 name=BASE-release
-baseurl=http://abf-downloads.rosalinux.ru/$NAME/repository/$ARCH/base/release/
+baseurl=http://abf-downloads.rosalinux.ru/${NAME}/repository/${ARCH}/base/release/
 gpgcheck=0
 
 [updates]
 name=BASE-updates
-baseurl=http://abf-downloads.rosalinux.ru/$NAME/repository/$ARCH/base/updates/
+baseurl=http://abf-downloads.rosalinux.ru/${NAME}/repository/${ARCH}/base/updates/
 gpgcheck=0
 EOF
 
-cat <<"EOF"> ${ch}/etc/yum.repos.d/abf-worker-service.repo
+cat <<EOF> ${ch}/etc/yum.repos.d/abf-worker-service.repo
 [abf-worker-service]
 name=abf-worker-service
-baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/$NAME/$ARCH/base/release/
+baseurl=http://abf-downloads.rosalinux.ru/abf_personal/repository/${NAME}/${ARCH}/base/release/
 gpgcheck=0
 EOF
 
