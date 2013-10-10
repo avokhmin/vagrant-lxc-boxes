@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ch="${NAME}"
+ch=`pwd`
+ch=${ch}/${NAME}
 echo ${NAME}
 echo ${ARCH}
 mkdir ${ch}
