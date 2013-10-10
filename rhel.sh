@@ -35,7 +35,7 @@ gpgcheck=0
 EOF
 
 
-setarch ${ARCH} yum --installroot=${script_path}/${ch} install -y yum git lxc
+setarch ${ARCH} yum --installroot=${script_path}/${ch} install -y yum git lxc lxc-templates
 
 
 mkdir -p ${ch}/dev
